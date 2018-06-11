@@ -1,0 +1,41 @@
+﻿@model MultichoiceCollection.Presentation.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_GuestLayout.cshtml";
+
+}
+@using (Html.BeginForm("Activation", "AdminAccount", FormMethod.Post, new { @class = "frm-single" }))
+{
+    <section class="inside">
+        <div class="title">
+            <strong>Multichoice</strong> Collection
+        </div>
+        <!-- /.title -->
+        <div class="frm-title">Account Activation</div>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="frm-input">
+            @Html.TextBoxFor(m => m.TransactionPIN, new { @class = "frm-inp", placeholder = "Transaction PIN", @type = "number" })
+            <i class="fa fa-bank frm-ico"></i>
+        </div>
+        <div class="frm-input">
+            @Html.TextBoxFor(m => m.Password, new { @class = "frm-inp", placeholder = "Password" })
+            <i class="fa fa-lock frm-ico"></i>
+        </div>
+        <div class="frm-input">
+            @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "frm-inp", placeholder = "Confirm Password" })
+            <i class="fa fa-lock frm-ico"></i>
+        </div>
+
+        <div class="clearfix margin-bottom-20">
+        </div>
+        <!-- /.clearfix -->
+        <button type="submit" class="frm-submit">Activate<i class="fa fa-lock"></i></button>
+
+        <!-- /.footer -->
+    </section>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

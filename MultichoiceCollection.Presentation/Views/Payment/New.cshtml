@@ -1,0 +1,53 @@
+﻿@model MultichoiceCollection.Presentation.Models.PaymentModel
+
+@{
+    ViewBag.Title = "New Payment";
+}
+<section class="row small-spacing">
+    <div class="box-content">
+        <h4 class="box-title">New Payment</h4>
+        <section class="col-md-6">
+            @using (Html.BeginForm("New", "Payment", null, FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+                <section class="inside">
+                    <!-- /.title -->
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <!-- /.frm-title -->
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.SmartCardNumber, new { @class = "form-control", placeholder = "Smart Card Number" })
+                    </div>
+                    <!-- /.frm-input -->
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.SubscriptionType, new { @class = "form-control", placeholder = "Subscription Type" })
+                    </div>
+                    <!-- /.frm-input -->
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.Duration, new { @class = "form-control", placeholder = "Duration" })
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                    <!-- /.footer -->
+
+                </section>
+            }
+        </section>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+
+
+
+
+
+

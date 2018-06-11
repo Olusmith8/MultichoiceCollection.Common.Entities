@@ -1,0 +1,16 @@
+F:\Projects\vs\tega\Multichoicecollection\MultichoiceCollection.Common.Entities\bin\Release\MultichoiceCollection.Common.Entities.dll.config
+F:\Projects\vs\tega\Multichoicecollection\MultichoiceCollection.Common.Entities\bin\Release\MultichoiceCollection.Common.Entities.dll
+F:\Projects\vs\tega\Multichoicecollection\MultichoiceCollection.Common.Entities\bin\Release\MultichoiceCollection.Common.Entities.pdb
+F:\Projects\vs\tega\Multichoicecollection\MultichoiceCollection.Common.Entities\bin\Release\EntityFramework.dll
+F:\Projects\vs\tega\Multichoicecollection\MultichoiceCollection.Common.Entities\bin\Release\EntityFramework.SqlServer.dll
+F:\Projects\vs\tega\Multichoicecollection\MultichoiceCollection.Common.Entities\bin\Release\Microsoft.AspNet.Identity.Core.dll
+F:\Projects\vs\tega\Multichoicecollection\MultichoiceCollection.Common.Entities\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\Projects\vs\tega\Multichoicecollection\MultichoiceCollection.Common.Entities\bin\Release\EntityFramework.xml
+F:\Projects\vs\tega\Multichoicecollection\MultichoiceCollection.Common.Entities\bin\Release\EntityFramework.SqlServer.xml
+F:\Projects\vs\tega\Multichoicecollection\MultichoiceCollection.Common.Entities\bin\Release\Microsoft.AspNet.Identity.Core.xml
+F:\Projects\vs\tega\Multichoicecollection\MultichoiceCollection.Common.Entities\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\Projects\vs\tega\Multichoicecollection\MultichoiceCollection.Common.Entities\obj\Release\MultichoiceCollection.Common.Entities.csprojResolveAssemblyReference.cache
+F:\Projects\vs\tega\Multichoicecollection\MultichoiceCollection.Common.Entities\obj\Release\MultichoiceCollection.Common.Entities.csproj.CoreCompileInputs.cache
+F:\Projects\vs\tega\Multichoicecollection\MultichoiceCollection.Common.Entities\obj\Release\MultichoiceCollection.Common.Entities.csproj.CopyComplete
+F:\Projects\vs\tega\Multichoicecollection\MultichoiceCollection.Common.Entities\obj\Release\MultichoiceCollection.Common.Entities.dll
+F:\Projects\vs\tega\Multichoicecollection\MultichoiceCollection.Common.Entities\obj\Release\MultichoiceCollection.Common.Entities.pdb

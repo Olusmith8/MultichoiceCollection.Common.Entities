@@ -1,0 +1,51 @@
+﻿@model MultichoiceCollection.Presentation.Models.ConfirmationResponseModel
+
+
+@{
+    ViewBag.Title = "Transaction Details";
+}
+@if (Model != null)
+{
+    <section class="container-fluid">
+        <article class="row small-spacing">
+            <div class="box-content">
+                <h4 class="box-title">Transaction Details</h4>
+                
+                    <section>
+                        <article class="col-md-6">
+                            <div class="col-md-3">Transaction Number:</div>
+                            <div class="col-md-9">@Model.transactionNumber</div>
+                        </article>
+                        <article class="col-md-6">
+                            <div class="col-md-3">Receipt Number:</div>
+                            <div class="col-md-9">@Model.receiptNumber</div>
+                        </article>
+                        <article class="col-md-6">
+                            <div class="col-md-3">Date:</div>
+                            <div class="col-md-9">@Model.date</div>
+                        </article>
+                        <article class="col-md-6">
+                            <div class="col-md-3">Message:</div>
+                            <div class="col-md-9">@Model.message</div>
+                        </article>
+                        <article class="col-md-6">
+                            <div class="col-md-3">Sucess:</div>
+                            <div class="col-md-9">@Model.sucess</div>
+                        </article>
+                        
+                        <article class="col-md-6">
+                            <div class="col-md-3">Audit Reference No:</div>
+                            <div class="col-md-9">@Model.auditReferenceNo</div>
+                        </article>
+                    </section>
+            </div>
+        </article>
+        
+    </section>
+}
+else
+{
+    <div class="alert alert-info">
+        <p>Tracaction details not found.</p>
+    </div>
+}

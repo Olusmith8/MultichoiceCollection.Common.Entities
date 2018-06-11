@@ -1,0 +1,12 @@
+﻿@using MultichoiceCollection.Common.Entities.Enum
+@using MultichoiceCollection.Presentation.Models
+@using MultichoiceCollection.Presentation.Services
+@if (TempData.ContainsKey(SharedService.GetGlobalMessageKey))
+{
+    var notification = (NotificationViewModel)(TempData[SharedService.GetGlobalMessageKey]);
+    <div class="alert alert-@notification.AlertType.ToString().ToLower() alert-dismissable">
+        <i class="@((notification.AlertType==AlertType.Success?"fa fa-check":notification.AlertType==AlertType.Warning?"fa fa-warning":notification.AlertType==AlertType.Danger? "fa fa-times" : ""))"></i>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        @Html.Raw(notification.Message)
+    </div>
+}

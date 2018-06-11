@@ -1,0 +1,56 @@
+﻿@using MultichoiceCollection.Models
+@model MultichoiceCollection.Presentation.Models.LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_GuestLayout.cshtml";
+
+}
+@using (Html.BeginForm("Login", "Account", new {ReturnUrl = ViewBag.ReturnUrl}, FormMethod.Post, new {@class = "frm-single"}))
+{
+    @Html.AntiForgeryToken()
+    <section class="inside">
+        <div class="title">
+            <strong>Multichoice</strong> Collection
+        </div>
+        <!-- /.title -->
+        <div class="frm-title">Login</div>
+            @if (ViewBag.Error != null)
+            {
+              <div class="alert alert-danger">@ViewBag.Error</div>  
+            }
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <!-- /.frm-title -->
+        <div class="frm-input">
+            @Html.TextBoxFor(m => m.ClientId, new { @class = "frm-inp", placeholder = "Client Id" })
+            <i class="fa fa-bank frm-ico"></i>
+        </div>
+        <!-- /.frm-input -->
+        <div class="frm-input">
+            @Html.PasswordFor(m => m.Password, new { @class = "frm-inp", placeholder = "Password" })
+            <i class="fa fa-lock frm-ico"></i>
+        </div>
+        <!-- /.frm-input -->
+        <div class="clearfix margin-bottom-20">
+            <div class="pull-left">
+                <div class="checkbox primary">
+                   @Html.CheckBoxFor(m => m.RememberMe, new { id = "rememberme" })
+                   @Html.LabelFor(m=>m.RememberMe)
+                </div>
+                <!-- /.checkbox -->
+            </div>
+            <!-- /.pull-left -->
+            <div class="pull-right">
+                <a href="#" class="a-link"><i class="fa fa-unlock-alt"></i>Forgot password?</a>
+            </div>
+            <!-- /.pull-right -->
+        </div>
+        <!-- /.clearfix -->
+        <button type="submit" class="frm-submit">Login<i class="fa fa-sign-in"></i></button>
+
+        <!-- /.footer -->
+    </section>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

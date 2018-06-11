@@ -1,0 +1,543 @@
+﻿@using MultichoiceCollection.Presentation.Models
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title - Multichoice Collection</title>
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="/assets/styles/style.min.css">
+
+    <!-- Themify Icon -->
+    <link rel="stylesheet" href="/assets/fonts/themify-icons/themify-icons.css">
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" href="/assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css">
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="/assets/plugin/waves/waves.min.css">
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="/assets/plugin/sweet-alert/sweetalert.css">
+
+    <!-- Percent Circle -->
+    <link rel="stylesheet" href="/assets/plugin/percircle/css/percircle.css">
+    <!-- Chartist Chart -->
+    <link rel="stylesheet" href="/assets/plugin/chart/chartist/chartist.min.css">
+    <!-- FullCalendar -->
+    <link rel="stylesheet" href="/assets/plugin/fullcalendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="/assets/plugin/fullcalendar/fullcalendar.print.css" media='print'>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
+
+
+</head>
+<body>
+@{
+    UserModel userInfo = null;
+       if (TempData.ContainsKey("UserInfo"))
+       {
+           userInfo = TempData["UserInfo"] as UserModel;
+       }
+    }
+    <section class="main-menu">
+        <header class="header">
+            <a href="/" class="logo"><img src="~/assets/images/logo.png" /></a>
+            <button type="button" class="button-close fa fa-times js__menu_close"></button>
+        </header>
+        <!-- /.header -->
+        <div class="content">
+            <div class="navigation">
+                <h5 class="title"><span>Navigation</span>
+                @if (userInfo != null)
+                {
+                     <br />
+                    <small>Client: @userInfo.clientAppName</small>
+                }
+               
+                </h5>
+                
+                <!-- /.title -->
+                <ul class="menu js__accordion">
+                    <li class="@ViewBag.CurrentDashboard">
+                        <a class="waves-effect" href="@Url.Action("Index", "Home")"><i class="menu-icon ti-dashboard"></i><span>Dashboard</span></a>
+                    </li>
+                    <li class="@ViewBag.Types">
+                        <a class="waves-effect" href="@Url.Action("BouquetTypes","Home")"><i class="menu-icon ti-list"></i><span>Types</span></a>
+                    </li> 
+                    <li class="@ViewBag.Bouquets">
+                        <a class="waves-effect bouquets-modal" data-toggle="modal" data-target="#bouquetsModal" href="javascript:void(0);" onclick="return false;"><i class="fa fa fa-list-alt"></i><span>Bouquets</span></a>
+                    </li>
+                    <li class="@ViewBag.Accounts">
+                        <a class="waves-effect" data-toggle="modal" data-target="#accountsModal" href="javascript:void(0);"><i class="menu-icon ti-user"></i><span>Accounts</span></a>
+                    </li>
+                    <li class="@ViewBag.BouquetDetails">
+                        <a class="waves-effect" data-toggle="modal" data-target="#detailsModal" href="javascript:void(0);"><i class="fa fa fa-list"></i><span>Bouquet Details</span></a>
+                    </li>
+                    <li class="@ViewBag.MakePaymentCustomerNumber">
+                        <a class="waves-effect" data-toggle="modal1" data-target="#makePaymentCustomerNumberModal" href="@Url.Action("Index", "Payment", new {id="customerNumber"})"><i class="fa fa fa-credit-card"></i><span>Make Payment With Customer Number</span></a>
+                    </li>
+                    <li class="@ViewBag.MakePaymentSmartCardNumber">
+                        <a class="waves-effect" data-toggle="modal1" data-target="#makePaymentSmartCardNumberModal" href="@Url.Action("Index", "Payment", new {id="smartCardNumber"})"><i class="fa fa fa-credit-card"></i><span>Make Payment With Smart Card Number</span></a>
+                    </li> 
+                    <li class="@ViewBag.TransactionInquiries">
+                        <a class="waves-effect" data-toggle="modal" data-target="#transactionInquiriesModal" href="javascript:void(0);"><i class="fa fa fa-money"></i><span>Transaction Inquiries</span></a>
+                    </li>
+                    <li class="@ViewBag.Confirmation">
+                        <a class="waves-effect" data-toggle="modal" data-target="#confirmationModal" href="javascript:void(0);"><i class="fa fa fa-check-circle"></i><span>Transaction Confirmation</span></a>
+                    </li>
+
+                    
+                    
+                </ul>
+               
+            </div>
+            <!-- /.navigation -->
+        </div>
+        <!-- /.content -->
+    </section>
+    <!-- /.main-menu -->
+    <section class="fixed-navbar">
+        <div class="pull-left">
+            <button type="button" class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
+            <h1 class="page-title">@ViewBag.Title</h1>
+            <!-- /.page-title -->
+        </div>
+        <!-- /.pull-left -->
+        <div class="pull-right">
+            <div class="ico-item">
+                <a href="#" class="ico-item ti-search js__toggle_open" data-target="#searchform-header"></a>
+                <form action="#" id="searchform-header" class="searchform js__toggle"><input type="search" placeholder="Search..." class="input-search"><button class="ti-search button-search" type="submit"></button></form>
+                <!-- /.searchform -->
+            </div>
+            <!-- /.ico-item -->
+            <a href="#" class="ico-item ti-email notice-alarm js__toggle_open" data-target="#message-popup"></a>
+            <a href="#" class="ico-item ti-bell notice-alarm js__toggle_open" data-target="#notification-popup"></a>
+            <div class="ico-item">
+                <i class="ti-user"></i>
+                <ul class="sub-ico-item">
+                    <li><a href="javascript:void(0);">
+                        @if (userInfo != null)
+                        {
+                           @userInfo.clientAppName
+                        }
+                    </a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="@Url.Action("LogOff","Account")">Log Out</a></li>
+                </ul>
+                <!-- /.sub-ico-item -->
+            </div>
+        </div>
+        <!-- /.pull-right -->
+    </section>
+    <!-- /.fixed-navbar -->
+    <section id="notification-popup" class="notice-popup js__toggle" data-space="75">
+        <h2 class="popup-title">Your Notifications</h2>
+        <!-- /.popup-title -->
+        <section class="content">
+            <ul class="notice-list">
+                <li>
+                    <a href="#">
+                        <span class="avatar"><img src="/assets/images/avatar-sm-1.jpg" alt=""></span>
+                        <span class="name">John Doe</span>
+                        <span class="desc">Like your post: “Contact Form 7 Multi-Step”</span>
+                        <span class="time">10 min</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="avatar"><img src="/assets/images/avatar-sm-2.jpg" alt=""></span>
+                        <span class="name">Anna William</span>
+                        <span class="desc">Like your post: “Facebook Messenger”</span>
+                        <span class="time">15 min</span>
+                    </a>
+                </li>
+               
+            </ul>
+            <!-- /.notice-list -->
+            <a href="#" class="notice-read-more">See more messages <i class="fa fa-angle-down"></i></a>
+        </section>
+        <!-- /.content -->
+    </section>
+    <!-- /#notification-popup -->
+    <section id="message-popup" class="notice-popup js__toggle" data-space="75">
+        <h2 class="popup-title">Recent Messages<a href="#" class="pull-right text-danger">New message</a></h2>
+        <!-- /.popup-title -->
+        <div class="content">
+            <ul class="notice-list">
+                <li>
+                    <a href="#">
+                        <span class="avatar"><img src="/assets/images/avatar-sm-1.jpg" alt=""></span>
+                        <span class="name">John Doe</span>
+                        <span class="desc">Amet odio neque nobis consequuntur consequatur a quae, impedit facere repellat voluptates.</span>
+                        <span class="time">10 min</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="avatar"><img src="/assets/images/avatar-sm-3.jpg" alt=""></span>
+                        <span class="name">Harry Halen</span>
+                        <span class="desc">Amet odio neque nobis consequuntur consequatur a quae, impedit facere repellat voluptates.</span>
+                        <span class="time">15 min</span>
+                    </a>
+                </li>
+               
+            </ul>
+            <!-- /.notice-list -->
+            <a href="#" class="notice-read-more">See more messages <i class="fa fa-angle-down"></i></a>
+        </div>
+        <!-- /.content -->
+    </section>
+    <!-- /#message-popup -->
+    <section id="wrapper">
+        <div class="main-content">
+            @Html.Partial("_alert")
+            @RenderBody()
+            <!-- /.row -->
+            <footer class="footer">
+                <ul class="list-inline">
+                    <li>@DateTime.UtcNow.Year &copy; Multichoice Collection. All rights reserved.</li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </footer>
+        </div>
+        <!-- /.main-content -->
+        
+</section><!--/#wrapper -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="/assets/script/html5shiv.min.js"></script>
+        <script src="/assets/script/respond.min.js"></script>
+    <![endif]-->
+    <!--
+    ================================================== -->
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/assets/scripts/jquery.min.js"></script>
+    <script src="/assets/scripts/modernizr.min.js"></script>
+    <script src="/assets/plugin/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/assets/plugin/nprogress/nprogress.js"></script>
+    <script src="/assets/plugin/sweet-alert/sweetalert.min.js"></script>
+    <script src="/assets/plugin/waves/waves.min.js"></script>
+    <!-- Sparkline Chart -->
+    <script src="/assets/plugin/chart/sparkline/jquery.sparkline.min.js"></script>
+    <script src="/assets/scripts/chart.sparkline.init.min.js"></script>
+    <!-- Percent Circle -->
+    <script src="/assets/plugin/percircle/js/percircle.js"></script>
+    <!-- Chartist Chart -->
+    <script src="/assets/plugin/chart/chartist/chartist.min.js"></script>
+    <script src="/assets/scripts/jquery.chartist.init.min.js"></script>
+    <!-- FullCalendar -->
+    <script src="/assets/plugin/moment/moment.js"></script>
+    <script src="/assets/plugin/fullcalendar/fullcalendar.min.js"></script>
+    <script src="/assets/scripts/fullcalendar.init.js"></script>
+<script src="/assets/scripts/main.min.js"></script>
+<script>
+    jQuery(function($) {
+        $('.modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var bouquet = button.data('bouquet'); // Extract info from data-* attributes
+
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this);
+            modal.find('.bouquet-type').html(bouquet);
+            modal.find('.input-bouquet-type').val(bouquet);
+        });
+    });
+</script>
+
+    <!-- Modals -->
+<!-- Bouquests modal -->
+    <article id="bouquetsModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <form action="@Url.Action("Bouquets", "Home")" method="GET" novalidate="">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Bouquets</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <select class="form-control" name="type" required="">
+                                <option value="">-- Select Type --</option>
+                                <option value="gotv">GOTV</option>
+                                <option value="dstv">DSTV</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </article>
+<!--Accounts modal-->
+    <article id="accountsModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <form action="@Url.Action("Accounts", "Home")" method="GET" novalidate="">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Accounts</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="control-label">Bouquet Type</label>
+                            <select class="form-control" name="type" required="">
+                                <option value="">-- Select Type --</option>
+                                <option value="gotv">GOTV</option>
+                                <option value="dstv">DSTV</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Smart Card Number</label>
+                            <input class="form-control" name="cardNumber" placeholder="Smart Card Number" required="" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    </article>
+<!--Details modal-->
+<article id="detailsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <form action="@Url.Action("BouquetDetails", "Home")" method="GET" novalidate="">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Bouquet Details</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="control-label">Bouquet Type</label>
+                        <select class="form-control" name="type" required="">
+                            <option value="">-- Select Type --</option>
+                            <option value="gotv">GOTV</option>
+                            <option value="dstv">DSTV</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Smart Card Number</label>
+                        <input class="form-control" name="cardNumber" placeholder="Smart Card Number" required=""/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+</article>
+
+    <!--Make payment with customer number modal-->
+<article id="makePaymentCustomerNumberModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <form action="@Url.Action("MakePaymentCustomerNumber", "Payment")" method="POST">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Make Payment With Customer Number | <span class="bouquet-type"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <section class="row">
+                        <input type="hidden" name="type" class="input-bouquet-type"/>
+                        @*<div class="form-group col-md-6">
+                            <label class="control-label">Bouquet Type</label>
+                            <select class="form-control" name="type" required="">
+                                <option value="">-- Select Type --</option>
+                                <option value="gotv">GOTV</option>
+                                <option value="dstv">DSTV</option>
+                            </select>
+                        </div>*@
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Product Key</label>
+                            <input class="form-control" name="productKey" placeholder="Product Key" required=""/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Customer Number</label>
+                            <input class="form-control" name="customernumber" placeholder="Customer Number" required=""/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Amount</label>
+                            <input class="form-control" name="amount" placeholder="Amount" required=""/>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Invoice Period</label>
+                            <input class="form-control" name="invoicePeriod" placeholder="Invoice Period" value="1" required=""/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Email Address</label>
+                            <input class="form-control" name="emailAddress" placeholder="Email Address" required=""/>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Account Number</label>
+                            <input class="form-control" name="accountNumber" placeholder="Account Number" required=""/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Mobile Number</label>
+                            <input class="form-control" name="mobileNumber" placeholder="Mobile Number" required=""/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Payment Mode</label>
+                            <input class="form-control" name="paymentMode" placeholder="Payment Mode" value="cash" required=""/>
+                        </div>
+                    </section>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+</article>
+    <!--Make payment with smart card number modal-->
+<article id="makePaymentSmartCardNumberModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <form action="@Url.Action("MakePaymentSmartCardNumber", "Payment")" method="POST">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Make Payment With Smart Card | <span class="bouquet-type"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <section class="row">
+                        <input type="hidden" name="type" class="input-bouquet-type" />
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Product Key</label>
+                            <input class="form-control" name="productKey" placeholder="Product Key" required=""/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Smart Card Number</label>
+                            <input class="form-control" name="smartcardnumber" placeholder="Smart Card Number" required=""/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Amount</label>
+                            <input class="form-control" name="amount" placeholder="Amount" required=""/>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Invoice Period</label>
+                            <input class="form-control" name="invoicePeriod" placeholder="Invoice Period" value="1" required=""/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Email Address</label>
+                            <input class="form-control" name="emailAddress" placeholder="Email Address" required=""/>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Account Number</label>
+                            <input class="form-control" name="accountNumber" placeholder="Account Number" required=""/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Mobile Number</label>
+                            <input class="form-control" name="mobileNumber" placeholder="Mobile Number" required=""/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Payment Description</label>
+                            <input class="form-control" name="paymentDescription" placeholder="Payment Description" value="DSTV Payment" required=""/>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Payment Mode</label>
+                            <input class="form-control" name="paymentMode" placeholder="Payment Mode" value="cash" required=""/>
+                        </div>
+                    </section>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+</article>
+
+   
+
+    <!--Transaction Inquiries modal-->
+<article id="transactionInquiriesModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <form action="@Url.Action("TransactionInquiries", "Transactions")">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Transaction Details</h4>
+                </div>
+                <div class="modal-body">
+                    <section class="row">
+
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Transaction Id</label>
+                            <input class="form-control" name="id" placeholder="Transaction Id" required=""/>
+                        </div>
+                    </section>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+</article>
+
+    <!--Confirmation modal-->
+    <article id="confirmationModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <form action="@Url.Action("Confirmation", "Transactions")">
+                <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Transaction Confirmation</h4>
+                        </div>
+                        <div class="modal-body">
+                            <section class="row">
+
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Transaction Id</label>
+                                    <input class="form-control" name="id" placeholder="Transaction Id" required="" />
+                                </div>
+                            </section>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+            </form>
+
+
+        </div>
+    </article>
+</body>
+</html>

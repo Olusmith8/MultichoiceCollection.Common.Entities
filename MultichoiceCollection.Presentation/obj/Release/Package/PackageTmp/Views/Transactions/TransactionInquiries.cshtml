@@ -1,0 +1,79 @@
+﻿@model MultichoiceCollection.Presentation.Models.TransactionsResponseModel
+
+
+@{
+    ViewBag.Title = "Transaction Details";
+}
+@if (Model != null)
+{
+    <section class="container-fluid">
+        <article class="row small-spacing">
+            <div class="box-content">
+                <h4 class="box-title">Transaction Details</h4>
+                
+                    <section>
+                        <article class="col-md-6">
+                            <div class="col-md-3">Id:</div>
+                            <div class="col-md-9">@Model.id</div>
+                        </article>
+                        <article class="col-md-6">
+                            <div class="col-md-3">Account Number:</div>
+                            <div class="col-md-9">@Model.accountNumber</div>
+                        </article>
+                        <article class="col-md-6">
+                            <div class="col-md-3">Transaction Date:</div>
+                            <div class="col-md-9">@Model.transactionDate</div>
+                        </article>
+                        <article class="col-md-6">
+                            <div class="col-md-3">Api ClientId:</div>
+                            <div class="col-md-9">@Model.apiClientId</div>
+                        </article>
+                        <article class="col-md-6">
+                            <div class="col-md-3">Customer Number:</div>
+                            <div class="col-md-9">@Model.customerNumber</div>
+                        </article>
+                        
+                        <article class="col-md-6">
+                            <div class="col-md-3">Device Number:</div>
+                            <div class="col-md-9">@Model.deviceNumber</div>
+                        </article>
+                       
+                        <article class="col-md-6">
+                            <div class="col-md-3">Package Code:</div>
+                            <div class="col-md-9">@Model.packageCode</div>
+                        </article>
+                        <article class="col-md-6">
+                            <div class="col-md-3">Business Type:</div>
+                            <div class="col-md-9">@Model.businessType</div>
+                        </article>
+                        <article class="col-md-6">
+                            <div class="col-md-3">Email Address:</div>
+                            <div class="col-md-9">@Model.emailAddress</div>
+                        </article>
+                        <article class="col-md-6">
+                            <div class="col-md-3">Mobile Number:</div>
+                            <div class="col-md-9">@Model.mobileNumber</div>
+                        </article>
+                         <article class="col-md-6">
+                            <div class="col-md-3">Amount:</div>
+                            <div class="col-md-9">@Model.amount</div>
+                        </article> 
+                        <article class="col-md-6">
+                            <div class="col-md-3">Transaction Fees:</div>
+                            <div class="col-md-9">@Model.transFees</div>
+                        </article>
+                    </section>
+                
+                
+
+            </div>
+        </article>
+        
+    </section>
+}
+else
+{
+    <div class="alert alert-info">
+        <p>Tracaction details not found.</p>
+    </div>
+}

@@ -1,0 +1,75 @@
+﻿@model MultichoiceCollection.Presentation.Models.MakePaymentViewModel
+@{
+    ViewBag.Title = "MakePayment";
+}
+
+<section class="container-fluid">
+    <article class="row small-spacing">
+        <div class="box-content">
+            <h4 class="box-title">Make Payment</h4>
+            <section>
+                <form action="@Url.Action("MakePaymentSmartCardNumber", "Payment")" method="POST">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Make Payment With Smart Card | @Model.Type</h4>
+                        </div>
+                        <div class="modal-body">
+                            <section class="row">
+                                <input type="hidden" name="type" value="@Model.Type" />
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Bouquet</label>
+                                    <select class="form-control" name="productKey" required="">
+                                        <option></option>
+                                        @foreach (var b in Model.Bouquets)
+                                        {
+                                            <option value="@b.code">@b.name</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Smart Card Number</label>
+                                    <input class="form-control" name="smartcardnumber" placeholder="Smart Card Number" required=""/>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Amount</label>
+                                    <input class="form-control" name="amount" placeholder="Amount" required=""/>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Invoice Period</label>
+                                    <input class="form-control" name="invoicePeriod" placeholder="Invoice Period" value="1" required=""/>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Email Address</label>
+                                    <input class="form-control" name="emailAddress" placeholder="Email Address" required=""/>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Mobile Number</label>
+                                    <input class="form-control" name="mobileNumber" placeholder="Mobile Number" required=""/>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Payment Description</label>
+                                    <input class="form-control" name="paymentDescription" placeholder="Payment Description" value="DSTV Payment" required=""/>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-label">Payment Mode</label>
+                                    <input class="form-control" name="paymentMode" placeholder="Payment Mode" value="cash" required=""/>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+            </section>
+               
+
+        </div>
+    </article>
+
+</section>

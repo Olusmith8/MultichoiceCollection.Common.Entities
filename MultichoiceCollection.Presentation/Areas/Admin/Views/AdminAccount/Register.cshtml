@@ -1,0 +1,77 @@
+﻿@model MultichoiceCollection.Presentation.Models.AdminRegisterViewModel
+@{
+    ViewBag.Title = "Register";
+
+}
+@section styles{
+    <style>
+        .frm-single {
+    width: 100%;
+     max-width: 700px; 
+}
+    </style>
+}
+
+*@using (Html.BeginForm("Register", "AdminAccount", FormMethod.Post, new { @class = "frm-single" , enctype = "multipart/form-data" }))
+{
+    <section class="inside">
+        <div class="title">
+            <strong>Admin</strong> Area
+        </div>
+        <!-- /.title -->
+        <div class="frm-title">Create account</div>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="frm-input">
+            @Html.TextBoxFor(m => m.AgentName, new { @class = "frm-inp", placeholder = "Agent Name" })
+            <i class="fa fa-user frm-ico"></i>
+        </div>
+
+        <div class="frm-input">
+            @Html.TextBoxFor(m => m.AccountNumber, new { @class = "frm-inp", placeholder = "Account Number" })
+            <i class="fa fa-user frm-ico"></i>
+        </div>
+        <div class="frm-input">
+            @Html.TextBoxFor(m => m.Email, new { @class = "frm-inp", placeholder = "Email" })
+            <i class="fa fa-envelope-o frm-ico"></i>
+        </div>
+        <div class="frm-input">
+            @Html.TextBoxFor(m => m.PhoneNumber, new {@class = "frm-inp", placeholder = "Phone Number"})
+            <i class="fa fa-phone frm-ico"></i>
+        </div>
+        <div class="frm-input">
+            @Html.DropDownListFor(m => m.Role, (SelectList) ViewBag.Roles, "Select Role", new {@class = "frm-inp", placeholder = "Phone Number"})
+            <i class="fa fa-list frm-ico"></i>
+        </div>
+        <div style="text-align: left;">
+                @Html.LabelFor(m => m.Logo, new {@class = "control-label text-left"})
+            </div>
+        <div class="frm-input">
+            <div>
+                @Html.TextBoxFor(m => m.Logo, new { @class = "frm-inp", type = "file" })
+                <i class="fa fa-user frm-ico"></i>
+            </div>
+           
+        </div>
+        <!-- /.frm-input -->
+    <div class="frm-input">
+        @Html.PasswordFor(m => m.Password, new {@class = "frm-inp", placeholder = "Password"})
+        <i class="fa fa-lock frm-ico"></i>
+    </div>
+     <div class="frm-input">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "frm-inp", placeholder = "Confirm Password" })
+            <i class="fa fa-lock frm-ico"></i>
+        </div>
+
+        <div class="clearfix margin-bottom-20"></div>
+        <!-- /.clearfix -->
+        <button type="submit" class="frm-submit">Register<i class="fa fa-upload"></i></button>
+
+        <!-- /.footer -->
+    </section>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

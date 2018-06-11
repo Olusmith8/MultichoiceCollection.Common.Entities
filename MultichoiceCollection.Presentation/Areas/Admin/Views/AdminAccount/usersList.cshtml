@@ -1,0 +1,40 @@
+﻿@model List<MultichoiceCollection.Common.Entities.Base.ApplicationUser>
+@{
+    ViewBag.Title = "Users";
+}
+
+<section class="row small-spacing">
+    <div class="box-content">
+        <h4 class="box-title">Bouquet Types</h4>
+
+        <!-- /.dropdown js__dropdown -->
+        <section class="table-responsive">
+            <table class="table table-striped margin-bottom-10">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.AgentName</td>
+                        <td>@item.UserName</td>
+                        <td>@item.Email</td>
+                        <td>@item.PhoneNumber</td>
+                        <td><a href="@Url.Action("Manage", new{id=item.Id})">Manage</a></td>
+                    </tr>
+                }
+
+
+                </tbody>
+            </table>
+        </section>
+        <!-- /.table -->
+    </div>
+</section>
