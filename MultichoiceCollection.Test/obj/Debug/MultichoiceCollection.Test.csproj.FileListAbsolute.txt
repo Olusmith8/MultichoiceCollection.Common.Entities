@@ -1,8 +1,0 @@
-F:\Projects\vs\tega\fidelisekeh30-multichoicecollection-528d53f7a445\fidelisekeh30-multichoicecollection-528d53f7a445\MultichoiceCollection.Test\bin\Debug\MultichoiceCollection.Test.dll
-F:\Projects\vs\tega\fidelisekeh30-multichoicecollection-528d53f7a445\fidelisekeh30-multichoicecollection-528d53f7a445\MultichoiceCollection.Test\bin\Debug\MultichoiceCollection.Test.pdb
-F:\Projects\vs\tega\fidelisekeh30-multichoicecollection-528d53f7a445\fidelisekeh30-multichoicecollection-528d53f7a445\MultichoiceCollection.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
-F:\Projects\vs\tega\fidelisekeh30-multichoicecollection-528d53f7a445\fidelisekeh30-multichoicecollection-528d53f7a445\MultichoiceCollection.Test\obj\Debug\MultichoiceCollection.Test.csprojResolveAssemblyReference.cache
-F:\Projects\vs\tega\fidelisekeh30-multichoicecollection-528d53f7a445\fidelisekeh30-multichoicecollection-528d53f7a445\MultichoiceCollection.Test\obj\Debug\MultichoiceCollection.Test.csproj.CoreCompileInputs.cache
-F:\Projects\vs\tega\fidelisekeh30-multichoicecollection-528d53f7a445\fidelisekeh30-multichoicecollection-528d53f7a445\MultichoiceCollection.Test\obj\Debug\MultichoiceCollection.Test.csproj.CopyComplete
-F:\Projects\vs\tega\fidelisekeh30-multichoicecollection-528d53f7a445\fidelisekeh30-multichoicecollection-528d53f7a445\MultichoiceCollection.Test\obj\Debug\MultichoiceCollection.Test.dll
-F:\Projects\vs\tega\fidelisekeh30-multichoicecollection-528d53f7a445\fidelisekeh30-multichoicecollection-528d53f7a445\MultichoiceCollection.Test\obj\Debug\MultichoiceCollection.Test.pdb
